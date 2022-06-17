@@ -1,6 +1,6 @@
 import React from "react";
 let FilterSections = ( ) => {
-  if ()
-  return ()
+ 
+  return (<div></div>)
 }
 export default FilterSections

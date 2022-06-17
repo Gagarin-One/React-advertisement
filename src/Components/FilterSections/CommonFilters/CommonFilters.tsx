@@ -6,12 +6,18 @@ import Slider from 'rc-slider';
 import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
 import AllFilter from "../AllFilter";
+import { useAppSelector, useAppDispatch } from '../../../Store/hooks';
+import {MainSlice} from '../../../Store/Reducers/AppSlice';
 
 
 
 const Main = () => {
+
+  const {category} = useAppSelector(state=> state.mainReducer)
+  const {changeCategory} = MainSlice.actions
+  const dispatch = useAppDispatch()
+
   let [range, setRange] = useState([0,1000])
-  let [category, setCategory] = useState<null|Option>({ value: 'all', label: 'Все' })
 
   type Option = {value: string, label: string}
 
@@ -24,7 +30,7 @@ const Main = () => {
   ]
 
   let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
-    setCategory(selectedOption);
+    dispatch(changeCategory(selectedOption));
   }
 
   let onChangeRange = (value:any) => {
