@@ -1,0 +1,51 @@
+.wrapper{
+  margin-left:109px;
+}
+.title{
+  color:#AFAFAF;
+  font-weight: bold;
+  font-size:14px;
+  margin-top:20px;
+}
+.myinput {
+  height: 22px;
+  width: 22px;
+  &[type="checkbox"]:before {
+    width: 20px;
+    height: 20px;
+  }
+  &[type="checkbox"]:after {
+    width: 16px;
+    height: 16px;
+  }
+}
+.checkbox{
+  display:flex;
+  p{
+    margin-top:5px;
+    margin-left: 5px;
+  }
+  color: #0373C5;
+  font-size: 16px;
+}
+.select{
+  width:325px;
+  margin-bottom: 30px;
+}
+.rooms{
+  display:flex;
+  font-size: 16px;
+  color: #0373C5;
+  margin-top: -13px;
+  
+  p{
+    border: 1px solid #AFAFAF;
+    padding: 13px 17px;
+    &:first-of-type{
+      border-radius: 5px 0 0 5px;
+    }
+    &:last-of-type{
+      border-radius:0 5px 5px 0;
+    }
+  }
+}
