@@ -14,7 +14,7 @@ const initialState: MainState = {
   isLoading: false,
   sliderRange:[],
   error:'',
-  category:{value: 'all', label: 'Все'},
+  category:{value: 'All', label: 'Все'},
   ads:[]
 }
 
