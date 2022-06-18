@@ -5,9 +5,10 @@ import Slider from 'rc-slider';
 
 import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
-import AllFilter from "../AllFilter";
+import AllFilter from "../CategoryOfFilters/AllFilter/AllFilter";
 import { useAppSelector, useAppDispatch } from '../../../Store/hooks';
 import {MainSlice} from '../../../Store/Reducers/AppSlice';
+import FilterSections from "../FiltersSections";
 
 
 
@@ -22,11 +23,11 @@ const Main = () => {
   type Option = {value: string, label: string}
 
   const options = [
-    { value: 'all', label: 'Все' },
-    { value: 'cars', label: 'Автомобили' },
-    { value: 'estate', label: 'Недвижимость' },
-    { value: 'laptops', label: 'Ноутбуки' },
-    { value: 'cameras', label: 'Фотоаппараты' }
+    { value: 'All', label: 'Все' },
+    { value: 'Cars', label: 'Автомобили' },
+    { value: 'Estate', label: 'Недвижимость' },
+    { value: 'Laptops', label: 'Ноутбуки' },
+    { value: 'Cameras', label: 'Фотоаппараты' }
   ]
 
   let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
@@ -37,7 +38,7 @@ const Main = () => {
     setRange(value)
   }
   
- console.log(category)
+ console.log(category?.value)
   return (
     <div className={s.wrapper}>
       <p className={s.filter}>Фильтр</p>
@@ -57,6 +58,7 @@ const Main = () => {
         onChange={onChangeRange}
         />
       </div>
+      <FilterSections CategoryValue={category?.value }/>
     </div>
   )
 }

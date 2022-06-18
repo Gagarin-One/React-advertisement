@@ -1,12 +1,13 @@
 .filter{
-  font-size: 30px;
+  font-size: 33px;
   color: black;
   margin:70px 109px;
 }
 .category{
   margin:50px 114px 0;
-  font-size: 20px;
+  font-size: 14px;
   color:#AFAFAF;
+  font-weight: bold;
 }
 .select{
   margin:10px 0 0 109px;
@@ -15,13 +16,15 @@
 .price{
   margin:38px 0 0 114px; 
   color:#AFAFAF;
+  font-weight: bold;
+  font-size: 14px;
 }
 .slider{
-  margin:10px 0 0 110px;
+  margin:10px 0 0 115px;
   width:315px;
 }
 .sumPrice{
-  margin-left: 109px;
+  margin-left: 115px;
   margin-top: 21px;
   display:flex;
   color:#AFAFAF;
