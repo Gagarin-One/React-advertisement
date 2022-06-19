@@ -5,14 +5,13 @@ import Slider from 'rc-slider';
 
 import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
-import AllFilter from "../CategoryOfFilters/AllFilter/AllFilter";
 import { useAppSelector, useAppDispatch } from '../../../Store/hooks';
 import {MainSlice} from '../../../Store/Reducers/AppSlice';
 import FilterSections from "../FiltersSections";
 
 
 
-const Main = () => {
+const CommonFilters = () => {
 
   const {category} = useAppSelector(state=> state.mainReducer)
   const {changeCategory} = MainSlice.actions
@@ -38,7 +37,6 @@ const Main = () => {
     setRange(value)
   }
   
- console.log(category?.value)
   return (
     <div className={s.wrapper}>
       <p className={s.filter}>Фильтр</p>
@@ -62,4 +60,4 @@ const Main = () => {
     </div>
   )
 }
-export default Main
+export default CommonFilters
