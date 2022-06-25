@@ -1,14 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../Store/hooks";
+import { FetchAds } from "../../Store/Reducers/actionCreators";
 import Content from "../ContentComponents/Content";
 import CommonFilters from "../FilterSections/CommonFilters/CommonFilters";
+import ItemSlider from "../ItemSlider/ItemSlider";
 import s from './MainPage.module.scss'
 const MainPage = ( ) => {
-  const arr = [{id:1,title:'bmw 3 series', price:'1999999', location:'moscow',date:'1 november',img:'https://5koleso.ru/wp-content/uploads/2020/07/07-bmw_m2.jpeg'},{id:1,title:'bmw 3 series', price:'1999999', location:'moscow',date:'2 november',img:'https://5koleso.ru/wp-content/uploads/2020/07/07-bmw_m2.jpeg'}]
+  const dispatch = useAppDispatch()
+  const {ads} = useAppSelector(state => state.mainReducer) 
+  const {category} = useAppSelector(state=> state.mainReducer)
+  const {priceRange} = useAppSelector(state=> state.mainReducer)
+
+  let [optionalFilter, setOptFilter] = useState([])
+  let [priorityFilter, setPriFilter] = useState([])
+  let [filteredArr, setFilteredArr] = useState<any>([])  //initial!
+    
+  useEffect(() => {
+    dispatch(FetchAds(category?.value))
+  },[category])
+  useEffect(() => {
+    dispatch(FetchAds('Ads'))
+  },[])
+
+  const filterArr = (filter:any) => {                     // add type
+    if (optionalFilter.some(f => f === filter)) {
+      for (let i = 0; i < optionalFilter.length; i++) {  // need refactoring
+        if(optionalFilter[i] === filter) {
+          setOptFilter(optionalFilter.splice(i,1))
+        }
+      } 
+    } else { setOptFilter(filter) }
+  }
+
+  const createFilteredArr = () => {
+    
+    // let filt = ads
+    // // filt.filter(item => item.price < priceRange[0] && item.price > priceRange[1])
+    // for (let i = 0 ; i < filt.length; i++){
+    //   if (filt[i].price > priceRange[0] && filt[i].price < priceRange[1]) {
+    //     filt.push(filt[i])
+    //   } 
+    // }
+    // console.log(filteredArr)
+  }
+
     return (
-      <div style={{display: 'flex'}}>
-        <CommonFilters/>
-        <Content array={arr}/>
+      <div>
+        <div style={{display: 'flex'}}>
+          <CommonFilters createArr={createFilteredArr}/>
+          <Content array={ads}/>
+          <button onClick={()=>createFilteredArr()}>gddggd</button>
+        </div>
       </div>
+      
     )
 }
 export default MainPage;
