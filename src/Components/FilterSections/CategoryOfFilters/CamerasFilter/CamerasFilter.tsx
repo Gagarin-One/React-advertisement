@@ -1,5 +1,5 @@
 import React from "react";
-import VButton from "../../../Etc/ViewButton/vButton";
+import VButton from "../../../Etc/ViewButton/ResultButton";
 import s from "./CamerasFilter.module.scss"
 import Select, { OnChangeValue } from 'react-select'
 
@@ -49,7 +49,7 @@ const CamerasFilter = ( ) => {
         options={resolutionOptions}
         defaultValue={resolutionOptions[0]}
       />
-      <VButton/>
+      
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import VButton from "../../../Etc/ViewButton/vButton";
+import VButton from "../../../Etc/ViewButton/ResultButton";
 import s from "./LaptopsFilter.module.scss"
 const LaptopsFilter = () => {
   return (
@@ -49,7 +49,6 @@ const LaptopsFilter = () => {
         <input type='checkbox' className={s.myinput}/>
         <p>Apple M1</p>
       </div>
-      <VButton/>
     </div>
   )
 }

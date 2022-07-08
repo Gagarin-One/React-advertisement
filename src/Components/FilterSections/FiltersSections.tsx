@@ -9,7 +9,7 @@ type CategoryType = {CategoryValue: string|undefined}
 
 let FilterSections:FC<CategoryType> = ({CategoryValue}) => {
   switch (CategoryValue){
-    case 'All': return <AllFilter/>;
+    case 'All': return <AllFilter /> ;
     case 'Cars': return <CarsFilter/>;
     case 'Estate': return <EstateFilter/>;
     case 'Laptops': return <LaptopsFilter/>;

@@ -1,7 +1,7 @@
 import React from "react";
 import s from './EstateFilter.module.scss'
 import Select, { OnChangeValue } from 'react-select'
-import VButton from "../../../Etc/ViewButton/vButton";
+import VButton from "../../../Etc/ViewButton/ResultButton";
 
 const EstateFilter = () => {
   type Option = {value: string, label: string}
@@ -46,7 +46,6 @@ const EstateFilter = () => {
         <p>4</p>
         <p>5+</p>
       </div>
-      <VButton/>
     </div>
   )
 }

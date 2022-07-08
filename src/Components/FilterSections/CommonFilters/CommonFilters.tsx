@@ -17,8 +17,9 @@ const Main = () => {
   const {category} = useAppSelector(state=> state.mainReducer)
   const {changeCategory} = MainSlice.actions
   const dispatch = useAppDispatch()
+  const {setRange} = MainSlice.actions
+  const {sliderRange} = useAppSelector(state => state.mainReducer)
 
-  let [range, setRange] = useState([0,1000])
 
   type Option = {value: string, label: string}
 
@@ -35,10 +36,10 @@ const Main = () => {
   }
 
   let onChangeRange = (value:any) => {
-    setRange(value)
+    dispatch(setRange(value))
   }
-  
- console.log(category?.value)
+
+
   return (
     <div className={s.wrapper}>
       <p className={s.filter}>Фильтр</p>
@@ -46,8 +47,8 @@ const Main = () => {
       <Select className={s.select} onChange={onHandleChange} options={options} defaultValue={options[0]}/>
       <p className={s.price}>Цена, ₽ </p>
       <div className={s.sumPrice} >
-        <div>от {range[0]}</div>
-        <div>до {range[1]}</div>
+        <div>от {sliderRange[0]}</div>
+        <div>до {sliderRange[1]}</div>
       </div>
       <div className={s.slider}>
         <Slider

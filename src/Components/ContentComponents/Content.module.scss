@@ -1,0 +1,54 @@
+.wrapper{
+  margin-left:55px;
+  margin-top:40px;
+}
+.title{
+  font-size:30px;
+}
+.liked{
+  width:200px;
+  height:50px;
+  background-color:#F6FBFF;
+  border: 2px solid rgb(216, 215, 215);
+  border-radius:5px;
+  font-size:16px;
+  margin-top:70px;
+  color:#0373C5
+}
+.mainImg{
+  width:300px;
+}
+.items{
+  margin-top:30px;
+}
+.itemWrapper{
+  display:flex;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgb(226, 225, 225);
+  margin-top:18px;
+  border-radius:5px;
+}
+.itemContent{
+  margin:30px 40px;
+}
+.itemTitle{
+  font-size:30px;
+  color:#0373C5;
+  margin:0;
+}
+.price{
+  font-size:30px;
+  font-weight:bold;
+  margin:10px 0 25px;
+}
+.location{
+  margin:3px 5px;
+  font-size: 20px;
+  color:#AFAFAF;
+}
+.date{
+  font-size:14px;
+  color:#AFAFAF;
+  margin:10px 3px 0;
+}
+// refactoring item title
