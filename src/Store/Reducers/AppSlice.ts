@@ -12,9 +12,10 @@ export type ContentType = {
 }
 
 type FilterDataType = {
-  select:string | undefined,
-  switch:string | undefined,
+  select:Array<string | null> | null,
+  switch:Array<string | undefined>,
   checkbox:Array<string> | undefined, // описать через интерфейс n колво объектов
+  dopeCheckbox: Array<string> | undefined
 }
 
 type MainState = {
@@ -38,9 +39,10 @@ const initialState: MainState = {
   ContentArr:[],
   priceRange:[0,1000],
   filterData:{
-    select:'',
-    switch:'any',
-    checkbox:[]
+    select:[],
+    switch:['any'],
+    checkbox:[],
+    dopeCheckbox:[]
   }
 }
 
@@ -68,17 +70,30 @@ export const MainSlice = createSlice({
     setRange(state,action:PayloadAction<Array<number>>){
       state.sliderRange = action.payload
     },
-    changeFilterSelect(state,action:PayloadAction<string | undefined>){
-        state.filterData.select = action.payload
-      },
-    changeFilterSwitch(state,action:PayloadAction<string>){
-      state.filterData.switch = action.payload
+    changeFilterSelect(state,action:PayloadAction<string | null>){
+      state.filterData.select?.splice(0,1,action.payload)
     },
-    changeFilterCheckbox(state,action:PayloadAction<string>){
+    changeDopeFilterSelect(state,action:PayloadAction<string | null>){
+      state.filterData.select?.splice(1,1,action.payload)
+    },
+    changeFilterSwitch(state,action:PayloadAction<string>){
+      state.filterData.switch.splice(0,1,action.payload)
+    },
+    changeDopeFilterSwitch(state,action:PayloadAction<string>){
+      state.filterData.switch.splice(1,1,action.payload)
+    }
+    ,
+    changeFilterCheckbox(state,action:PayloadAction<string>){  // need refactoring 
       state.filterData.checkbox?.push(action.payload)
     },
     removeFilterCheckbox(state,action:PayloadAction<string | undefined>){
       state.filterData.checkbox = state.filterData.checkbox?.filter((item) => item !== action.payload )
+    },
+    dopeChangeFilterCheckbox(state,action:PayloadAction<string>){
+      state.filterData.dopeCheckbox?.push(action.payload)
+    },
+    dopeRemoveFilterCheckbox(state,action:PayloadAction<string>){
+      state.filterData.dopeCheckbox = state.filterData.dopeCheckbox?.filter((item) => item !== action.payload )
     }
   }
 })
