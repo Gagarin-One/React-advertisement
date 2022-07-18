@@ -14,7 +14,7 @@ const CarsFilter = ( ) => {
   let {filterData} = useAppSelector(state => state.mainReducer)
 
   let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
-    dispatch(changeFilterSelect(selectedOption?.value))
+    dispatch(changeFilterSelect(selectedOption!.value))
   }
 
   const options = [
