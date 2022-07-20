@@ -1,27 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from './EstateFilter.module.scss'
 import Select, { OnChangeValue } from 'react-select'
 import VButton from "../../../Etc/ViewButton/ResultButton";
 import { useAppDispatch, useAppSelector } from "../../../../Store/hooks";
 import { MainSlice } from "../../../../Store/Reducers/AppSlice";
+import { FetchAds } from "../../../../Store/Reducers/actionCreators";
 
 const EstateFilter = () => {
-  type Option = {value: string, label: string}
+  type Option = {value: number, label: string}
   const dispatch = useAppDispatch()
   const {changeFilterSwitch} = MainSlice.actions
   const {changeFilterSelect} = MainSlice.actions
   const {filterData} = useAppSelector(state => state.mainReducer)
   const {changeFilterCheckbox} = MainSlice.actions
-  const {removeFilterCheckbox} = MainSlice.actions
+
+  useEffect(() => {
+    dispatch(FetchAds('Estate'))
+  },[])
+
   let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
     dispatch(changeFilterSelect(selectedOption!.value)) 
   }
   const options = [
-    { value: '1990', label: '1990' },
-    { value: '2000', label: '2000' },
-    { value: '2005', label: '2005' },
-    { value: '2010', label: '2010' },
-    { value: '2020', label: '2020' }
+    { value: 1990, label: '1990' },
+    { value: 2000, label: '2000' },
+    { value: 2005, label: '2005' },
+    { value: 2010, label: '2010' },
+    { value: 2020, label: '2020' }
   ]
 
   const onRoomsChange = (rooms:string) => {
@@ -29,9 +34,6 @@ const EstateFilter = () => {
   }
 
   const checkboxChange = (checkbox:string) => {     //можно вынести
-    filterData.checkbox && 
-    filterData.checkbox.some((item:string) => item === checkbox) ?
-    dispatch(removeFilterCheckbox(checkbox)):
     dispatch(changeFilterCheckbox(checkbox))
   }
 

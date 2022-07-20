@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./CarsFilter.module.scss"
 import Select, { OnChangeValue } from 'react-select'
 import { useAppDispatch, useAppSelector } from '../../../../Store/hooks';
 import {MainSlice} from '../../../../Store/Reducers/AppSlice';
+import { FetchAds } from "../../../../Store/Reducers/actionCreators";
 const CarsFilter = ( ) => {
-  type Option = {value: string, label: string}
+  type Option = {value: number, label: string} //!!! FIXME
 
   const dispatch = useAppDispatch()
   let {changeFilterSelect} = MainSlice.actions
   let {changeFilterSwitch} = MainSlice.actions
   let {changeFilterCheckbox} = MainSlice.actions
-  let {removeFilterCheckbox} = MainSlice.actions
   let {filterData} = useAppSelector(state => state.mainReducer)
 
   let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
     dispatch(changeFilterSelect(selectedOption!.value))
   }
 
+  useEffect(() => {
+    dispatch(FetchAds('Cars'))
+  },[])
+
   const options = [
-    { value: '1990', label: '1990' },
-    { value: '2000', label: '2000' },
-    { value: '2005', label: '2005' },
-    { value: '2010', label: '2010' },
-    { value: '2020', label: '2020' }
+    { value: 1990, label: '1990' },
+    { value: 2000, label: '2000' },
+    { value: 2005, label: '2005' },
+    { value: 2010, label: '2010' },
+    { value: 2020, label: '2020' }
   ]
 
   const checkboxChange = (checkbox:string) => {
-    filterData.checkbox && 
-    filterData.checkbox.some((item:string) => item === checkbox) ?
-    dispatch(removeFilterCheckbox(checkbox)):
     dispatch(changeFilterCheckbox(checkbox))
   }
 

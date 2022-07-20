@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../Store/hooks";
+import { FetchAds } from "../../../../Store/Reducers/actionCreators";
 import { MainSlice } from "../../../../Store/Reducers/AppSlice";
-import VButton from "../../../Etc/ViewButton/ResultButton";
 import s from "./LaptopsFilter.module.scss"
 const LaptopsFilter = () => {
   const dispatch = useAppDispatch()
@@ -10,21 +10,17 @@ const LaptopsFilter = () => {
   const {changeFilterSelect} = MainSlice.actions
   const {filterData} = useAppSelector(state => state.mainReducer)
   const {changeFilterCheckbox} = MainSlice.actions
-  const {removeFilterCheckbox} = MainSlice.actions
-  const {dopeChangeFilterCheckbox} = MainSlice.actions
-  const {dopeRemoveFilterCheckbox} = MainSlice.actions
+  const {changeDopeFilterCheckbox} = MainSlice.actions
+
+  useEffect(() => {
+    dispatch(FetchAds('Laptops'))
+  },[])
 
   const checkboxChange = (checkbox:string) => {     //можно вынести
-    filterData.checkbox && 
-    filterData.checkbox.some((item:string) => item === checkbox) ?
-    dispatch(removeFilterCheckbox(checkbox)):
     dispatch(changeFilterCheckbox(checkbox))
   }
   const DopeCheckboxChange = (checkbox:string) => {     //можно вынести
-    filterData.dopeCheckbox && 
-    filterData.dopeCheckbox.some((item:string) => item === checkbox) ?
-    dispatch(dopeRemoveFilterCheckbox(checkbox)):
-    dispatch(dopeChangeFilterCheckbox(checkbox))
+    dispatch(changeDopeFilterCheckbox(checkbox))
   }
   const onMemoryChange = (memory:string) => {
     dispatch(changeFilterSwitch(memory))
