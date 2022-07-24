@@ -6,22 +6,15 @@ import s from './Content.module.scss'
 type content = {array:Array<ContentType>}
 const Content:FC<content> = ({array}) => {
   const {category} = useAppSelector(state=> state.mainReducer)
+  const {isLoading} = useAppSelector(state => state.mainReducer)
   
-  // switch (category?.value) {
-  //   case 'All': return <AllSection/> ;
-  //   case 'Cars': return <CarsSection/>;
-  //   case 'Estate': return <EstateSection/>;
-  //   case 'Laptops': return <LaptopsSection/>;
-  //   case 'Cameras': return <CamerasSection/>;
-  //   default:return <AllSection/>
-  // }
   return(// refactoring item title
     <div className={s.wrapper}>
       <div style={{display: 'flex', justifyContent:"space-between", width:'850px'}}>
         <p className={s.title}>Результаты</p>
         <button className={s.liked}>Показать избранные</button>
       </div>
-      <div className={s.items}>{array.map((item,index) => {return <div key={index} className={s.itemWrapper}>
+      <div>{isLoading ? <div>vvfvffv</div>: <div className={s.items}>{array.map((item,index) => {return <div key={index} className={s.itemWrapper}>
         <img className={s.mainImg} src={item.img}/>
         <div className={s.itemContent}>
           <p className={s.itemTitle}>{item.title}</p>
@@ -38,7 +31,9 @@ const Content:FC<content> = ({array}) => {
         </div>
       </div>
       })}
-      </div>
+      </div>}</div>
+      
+      
     </div>
   )
 

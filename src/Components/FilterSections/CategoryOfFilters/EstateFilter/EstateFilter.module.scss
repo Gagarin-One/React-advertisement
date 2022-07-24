@@ -38,9 +38,13 @@
   color: #0373C5;
   margin-top: -13px;
   
-  p{
+  button{
+    margin-top: 10px;
     border: 1px solid #AFAFAF;
     padding: 13px 17px;
+    font-size: 16px;
+    color: #0373C5;
+    background-color: #F6FBFF;
     &:first-of-type{
       border-radius: 5px 0 0 5px;
     }

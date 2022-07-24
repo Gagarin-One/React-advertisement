@@ -39,10 +39,11 @@
 }
 .memory{
   display:flex;
-  font-size: 16px;
-  color: #0373C5;
-  
-  p{
+  margin-top:10px;
+  button{
+    background-color: #F6FBFF;
+    font-size: 16px;
+    color: #0373C5;
     border: 1px solid #AFAFAF;
     padding: 13px 19px;
     &:first-of-type{
@@ -55,9 +56,11 @@
 }
 .diagonal{
   display:flex;
-  font-size: 16px;
-  color: #0373C5;
-  p{
+  margin-top:10px;
+  button{
+    background-color: #F6FBFF;
+    font-size: 16px;
+    color: #0373C5;
     border: 1px solid #AFAFAF;
     padding: 13px 23px;
     &:first-of-type{
