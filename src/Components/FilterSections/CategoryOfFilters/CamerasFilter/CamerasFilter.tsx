@@ -29,7 +29,7 @@ const CamerasFilter = ( ) => {
   const matrixOptions = [
     { value: 27, label: '27.9×8.16' },
     { value: 36, label: '36×23.9' },
-    { value: 53.7, label: '53.7×40.2' }
+    { value: 53, label: '53.7×40.2' }
   ]
   const resolutionOptions = [
     { value: 640, label: '640×480'},

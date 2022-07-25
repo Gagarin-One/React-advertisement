@@ -6,6 +6,7 @@ import ResultButton from "../Etc/ViewButton/ResultButton"
 import s from './MainPage.module.scss'
 import { ContentType, MainSlice } from "../../Store/Reducers/AppSlice";
 import { FetchAds } from "../../Store/Reducers/actionCreators";
+import ItemWindow from "../ItemSlider/ItemWindow";
 const MainPage = ( ) => {
   const {category} = useAppSelector(state=> state.mainReducer)
   const {ads} = useAppSelector(state => state.mainReducer) // content items 
@@ -15,7 +16,7 @@ const MainPage = ( ) => {
   const {changeContentArr} = MainSlice.actions
   const {setInitialFilterData} = MainSlice.actions
   const dispatch = useAppDispatch()
- 
+
   useEffect(() => {
     dispatch(FetchAds(category?.value))   
     dispatch(setInitialFilterData())
@@ -77,24 +78,17 @@ const MainPage = ( ) => {
     if(filterData.select.length > 1){
       localArray = localArray.filter(item => item.tags.secondSelect >= filterData.select[1]!)
     }
-    dispatch(changeContentArr(localArray))
-    
-    console.log(localArray)
-    
-    
+    dispatch(changeContentArr(localArray))   
   }
-  console.log(ads)
-  console.log(filterData)
 
     return (
-      <div>
-        <div style={{display: 'flex'}}>
-          <CommonFilters/>
+      <div className={s.wrapper}>
+        <div className={s.content}>
+          <CommonFilters />
           <Content array={ContentArr}/>
         </div>
         <ResultButton createArr={()=>createFilteredArr}/>
       </div>
-      
     )
 }
 export default MainPage;

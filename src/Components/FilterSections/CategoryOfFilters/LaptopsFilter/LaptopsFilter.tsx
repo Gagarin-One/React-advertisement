@@ -54,7 +54,7 @@ const LaptopsFilter = () => {
       <div className={s.diagonal}>
         <button onClick={() => onDiaganalChange('any')}>Любой</button>
         <button onClick={() => onDiaganalChange('13')}>13'</button>
-        <button onClick={() => onDiaganalChange('14')}>14'</button>
+        <button onClick={() => onDiaganalChange('15')}>15'</button>
         <button onClick={() => onDiaganalChange('16')}>16'</button>
       </div>
       
