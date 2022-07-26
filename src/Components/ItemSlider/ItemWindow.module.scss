@@ -7,6 +7,23 @@
   position: fixed;
   z-index: 2;
   border-radius:10px;
+  overflow: scroll;
+  padding-top:10px;
+  svg{
+    cursor: pointer;
+    position: fixed;
+    margin-left: 870px;
+    &:hover{
+      fill:#AFAFAF;
+    }
+  }
+}
+.limitedWrapper{
+  margin-top:40px;
+  width:1000px;
+  height: 710px;
+  position: fixed;
+  overflow: scroll;
 }
 .wholeOpacity{
   top: 0px;
@@ -24,14 +41,48 @@
   width:900px;
 }
 .title{
-  font-size: 30px;
+  margin: 0;
+  font-size: 40px;
+  font-weight:500;
+  text-transform: uppercase
 }
 .price{
-  font-size: 18px;
+  margin-top:10px;
+  font-size: 28px;
 }
 .top{
   display: flex;
 }
 .content{
-  margin:50px;
+  margin:0 50px;
+}
+
+img{
+  width:750px
+}
+b{
+      
+  color: #AFAFAF;
+  font-weight: bold;
+  font-size:18px;
+}
+.info{
+  display: flex;
+  div{
+    margin-right: 50px;
+    margin-top: 28px;
+    p{
+      margin-top:8px;
+      font-size:24px;
+      font-weight: 500;
+    }
+  }
+}
+.seller{
+  margin-top: 15px;
+  font-size:25px;
+  color: #0373C5;
+}
+.description{
+  font-size:20px
 }
