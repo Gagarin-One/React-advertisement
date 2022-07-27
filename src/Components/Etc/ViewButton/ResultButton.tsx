@@ -5,7 +5,7 @@ type ButtonType = {createArr: any}
 const ResultButton:FC<ButtonType> = ({createArr}) => {
   return (
     <div className={s.wrapper}>
-      <button onClick={createArr()}>Показать</button>
+      <button className={s.buttonClass} onClick={createArr()}>Показать</button>
     </div>
   )
 }

@@ -84,10 +84,9 @@ const MainPage = ( ) => {
     return (
       <div className={s.wrapper}>
         <div className={s.content}>
-          <CommonFilters />
+          <CommonFilters createFilteredArr={createFilteredArr}/>
           <Content array={ContentArr}/>
         </div>
-        <ResultButton createArr={()=>createFilteredArr}/>
       </div>
     )
 }

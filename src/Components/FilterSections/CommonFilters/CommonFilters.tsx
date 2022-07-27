@@ -10,10 +10,11 @@ import {MainSlice} from '../../../Store/Reducers/AppSlice';
 import FilterSections from "../FiltersSections";
 import { FetchAds } from "../../../Store/Reducers/actionCreators";
 import VButton from "../../Etc/ViewButton/ResultButton";
+import ResultButton from "../../Etc/ViewButton/ResultButton";
 
 
-
-const CommonFilters = () => {
+type CommonFiltersType = {createFilteredArr:()=>void}
+const CommonFilters:FC<CommonFiltersType> = ({createFilteredArr}) => {
   const {ads} = useAppSelector(state=> state.mainReducer)
   const {category} = useAppSelector(state=> state.mainReducer)
   const {changeCategory} = MainSlice.actions
@@ -71,6 +72,7 @@ console.log(sliderRange)
         />
       </div>
       <FilterSections CategoryValue={category?.value }/>
+      <ResultButton createArr={()=>createFilteredArr}/>
     </div>
   )
 }
