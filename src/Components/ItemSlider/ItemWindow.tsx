@@ -1,13 +1,22 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useAppSelector } from "../../Store/hooks";
 import { ContentType } from "../../Store/Reducers/AppSlice";
 import s from './ItemWindow.module.scss'
 
 type ItemWindowType = {changeWindow:()=>void, itemData:ContentType}
+
 const ItemWindow:FC<ItemWindowType> = ({changeWindow,itemData}) => {
-  
+  let [info, setInfo] = useState<string[]>([])
+
+  useEffect(() => {
+    itemData.category === 'Cars' && setInfo(["Год выпуска","Корбка передач","Тип кузова"])
+    itemData.category === 'Estate' && setInfo(["Тип недвижимости","Площадь,м²","Кол-во комнат"])
+    itemData.category === 'Laptops' && setInfo(["Тип ноутбука","Объём памяти","Диагональ","Тип процессора"])
+    itemData.category === 'Cameras' && setInfo(["Тип фотоаппарата","Разрешение матрицы","Разрешение видео"])
+  },[])
+
   return(
-    <div className={s.wholeOpacity}>
+    <div className={s.wholeShadow}>
       <div className={s.wrapper}>
         <div className={s.limitedWrapper}>
         <div className={s.content}>
@@ -25,22 +34,26 @@ const ItemWindow:FC<ItemWindowType> = ({changeWindow,itemData}) => {
             </div>
             <div className={s.info}>
               <div>
-                <b>Год выпуска</b>
-                <p>Год выпуска</p>
+                <b>{info[0]}</b>
+                <p>{itemData.tags.textInfo[2]}</p>
               </div>
               <div>
-                <b>Коробка передач</b>
-                <p>Коробка передач</p>
+                <b>{info[1]}</b>
+                <p>{itemData.tags.textInfo[1]}</p>
               </div>
               <div>
-                <b>Тип кузова</b>
-                <p>Тип кузова</p>
+                <b>{info[2]}</b>
+                <p>{itemData.tags.textInfo[0]}</p>
+              </div>
+              <div>
+                <b>{itemData.category === 'Laptops' && info[3]}</b>
+                <p>{itemData.category === 'Laptops' && itemData.tags.textInfo[3]}</p>
               </div>
             </div>
             <b>Продавец</b>
-            <p className={s.seller}>Семён Корж</p>
+            <p className={s.seller}>{itemData.descriptionData.seller}</p>
             <b>Описание товара</b>
-            <p className={s.description}>В ведомстве не исключают возможность того, что россиянам перестанут выдавать шенгенские визы. Отметили в министерстве и «деградацию»</p>
+            <p className={s.description}>{itemData.descriptionData.description}</p>
           </div>
         </div>
         </div>
