@@ -35,7 +35,7 @@ const Content:FC<content> = ({array}) => {
       </div>
       <div>{
       isLoading ?
-       <div>vvfvffv</div> : 
+       <img className={s.preloader} src='img/loading.gif'/> : 
        <div className={s.items}>{
        array.map((item) => {
         return <div 
