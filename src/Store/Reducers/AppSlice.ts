@@ -4,18 +4,24 @@ type Option = {value: string, label: string}
 
 export type ContentType = {
   id:number,
+  category:string,
   title:string,
   price:number,
   location:string,
   date:string,
   img:string, 
+  descriptionData:{
+    seller:string,
+    description:string
+  },
   tags:{
     select: number,
     switch: string,
     secondSwitch:string,
     secondSelect:number,
     checkbox: string, 
-    dopeCheckbox:string
+    dopeCheckbox:string,
+    textInfo:string[]
   }
 }
 
