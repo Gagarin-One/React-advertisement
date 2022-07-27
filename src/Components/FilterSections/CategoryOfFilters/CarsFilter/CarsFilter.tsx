@@ -4,6 +4,7 @@ import Select, { OnChangeValue } from 'react-select'
 import { useAppDispatch, useAppSelector } from '../../../../Store/hooks';
 import {MainSlice} from '../../../../Store/Reducers/AppSlice';
 import { FetchAds } from "../../../../Store/Reducers/actionCreators";
+import Switch from "../../../Etc/Switch/Switch";
 const CarsFilter = ( ) => {
   type Option = {value: number, label: string} //!!! FIXME
 
@@ -11,7 +12,7 @@ const CarsFilter = ( ) => {
   let {changeFilterSelect} = MainSlice.actions
   let {changeFilterSwitch} = MainSlice.actions
   let {changeFilterCheckbox} = MainSlice.actions
-  let {filterData} = useAppSelector(state => state.mainReducer)
+  
 
   let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
     dispatch(changeFilterSelect(selectedOption!.value))
@@ -29,16 +30,18 @@ const CarsFilter = ( ) => {
     { value: 2020, label: '2020' }
   ]
 
+  const SwitchArr = [
+  {switchName:'any',switchTitle:"Любая"},
+  {switchName:'auto',switchTitle:"Автомат"},
+  {switchName:'mech',switchTitle:"Механика"},]
   const checkboxChange = (checkbox:string) => {
     dispatch(changeFilterCheckbox(checkbox))
   }
 
-  const onTransmissionChange = (transmission:string) => {
-    dispatch(changeFilterSwitch(transmission))
-  }
 
   return ( 
     <div className={s.wrapper}>
+
       <p className={s.title}>Минимальный год выпуска</p>
       <Select 
         className={s.select}
@@ -46,12 +49,10 @@ const CarsFilter = ( ) => {
         options={options}
         defaultValue={options[0]}
       />
+
       <p className={s.title}>Коробка передач</p>
-      <div className={s.transmission}>
-        <button onClick={() => onTransmissionChange('any')}>Любая</button>
-        <button onClick={() => onTransmissionChange('auto')}>Автомат</button>
-        <button onClick={() => onTransmissionChange('mech')}>Механика</button>
-      </div>
+      <Switch arrayOfUnits={SwitchArr} />
+
       <p className={s.title}>Тип кузова</p>
       <div className={s.checkbox}>
         <input type='checkbox' onChange={() =>checkboxChange('sedan')}className={s.myinput}/>
@@ -73,6 +74,7 @@ const CarsFilter = ( ) => {
         <input type='checkbox'  onChange={() =>checkboxChange('cope')} className={s.myinput}/>
         <p>Купе</p>
       </div>
+
     </div>
   )
 }

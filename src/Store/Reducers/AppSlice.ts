@@ -1,7 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 type Option = {value: string, label: string}
-
+export type TagsType = {
+  select: number,
+  switch: string,
+  secondSwitch:string,
+  secondSelect:number,
+  checkbox: string, 
+  dopeCheckbox:string,
+  textInfo:string[]
+}
 export type ContentType = {
   id:number,
   category:string,
@@ -14,15 +22,7 @@ export type ContentType = {
     seller:string,
     description:string
   },
-  tags:{
-    select: number,
-    switch: string,
-    secondSwitch:string,
-    secondSelect:number,
-    checkbox: string, 
-    dopeCheckbox:string,
-    textInfo:string[]
-  }
+  tags:TagsType
 }
 
 type FilterDataType = {

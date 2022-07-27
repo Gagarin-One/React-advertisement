@@ -5,6 +5,7 @@ import VButton from "../../../Etc/ViewButton/ResultButton";
 import { useAppDispatch, useAppSelector } from "../../../../Store/hooks";
 import { MainSlice } from "../../../../Store/Reducers/AppSlice";
 import { FetchAds } from "../../../../Store/Reducers/actionCreators";
+import Switch from "../../../Etc/Switch/Switch";
 
 const EstateFilter = () => {
   type Option = {value: number, label: string}
@@ -22,6 +23,15 @@ const EstateFilter = () => {
   let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
     dispatch(changeFilterSelect(selectedOption!.value)) 
   }
+  const SwitchArr = [
+    {switchName:'any',switchTitle:"Любая"},
+    {switchName:'1',switchTitle:"1"},
+    {switchName:'2',switchTitle:"2"},
+    {switchName:'3',switchTitle:"3"},
+    {switchName:'4',switchTitle:"4"},
+    {switchName:'5+',switchTitle:"5+"}
+  ]
+    
   const options = [
     { value: 20, label: '20' },
     { value: 40, label: '40' },
@@ -29,10 +39,6 @@ const EstateFilter = () => {
     { value: 100, label: '100' },
     { value: 120, label: '120' }
   ]
-
-  const onRoomsChange = (rooms:string) => {
-    dispatch(changeFilterSwitch(rooms))
-  }
 
   const checkboxChange = (checkbox:string) => {     //можно вынести
     dispatch(changeFilterCheckbox(checkbox))
@@ -61,14 +67,7 @@ const EstateFilter = () => {
         defaultValue={options[0]}
       />
       <p className={s.title}>Колличество комнат</p>
-      <div className={s.rooms}>
-        <button onClick={() => onRoomsChange('any')}>Любое</button>
-        <button onClick={() => onRoomsChange('1')}>1</button>
-        <button onClick={() => onRoomsChange('2')}>2</button>
-        <button onClick={() => onRoomsChange('3')}>3</button>
-        <button onClick={() => onRoomsChange('4')}>4</button>
-        <button onClick={() => onRoomsChange('5+')}>5+</button>
-      </div>
+      <Switch arrayOfUnits={SwitchArr} />
     </div>
   )
 }

@@ -1,0 +1,30 @@
+.switch{
+  display:flex;
+  font-size: 16px;
+  color: #0373C5;
+  margin-top: -13px;
+  
+  button{
+    margin-top:10px;
+    border: 1px solid #AFAFAF;
+    padding: 13px 20px;
+    background-color: #F6FBFF;
+    font-size: 16px;
+    color: #0373C5;
+    cursor: pointer;
+    &:hover{
+      background-color: #e6f2fd;
+    }
+    &:first-of-type{
+      border-radius: 5px 0 0 5px;
+      padding: 13px 13px;
+    }
+    &:last-of-type{
+      border-radius:0 5px 5px 0;
+      padding: 13px 13px;
+    }
+  }
+  .unitActive{
+    background-color: #d2e8ff;
+  }
+}
