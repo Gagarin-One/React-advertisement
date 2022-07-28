@@ -43,6 +43,9 @@ const EstateFilter = () => {
   const checkboxChange = (checkbox:string) => {     //можно вынести
     dispatch(changeFilterCheckbox(checkbox))
   }
+  const switchChange = (switchHandle:string) => {
+    dispatch(changeFilterSwitch(switchHandle))
+  }
 
   return (
     <div className={s.wrapper}>
@@ -67,7 +70,7 @@ const EstateFilter = () => {
         defaultValue={options[0]}
       />
       <p className={s.title}>Колличество комнат</p>
-      <Switch arrayOfUnits={SwitchArr} />
+      <Switch arrayOfUnits={SwitchArr} onSwitchChange={switchChange}/>
     </div>
   )
 }

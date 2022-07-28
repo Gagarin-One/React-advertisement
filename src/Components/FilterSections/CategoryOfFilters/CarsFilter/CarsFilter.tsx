@@ -37,8 +37,10 @@ const CarsFilter = ( ) => {
   const checkboxChange = (checkbox:string) => {
     dispatch(changeFilterCheckbox(checkbox))
   }
-
-
+  
+  const switchChange = (switchHandle:string) => {
+    dispatch(changeFilterSwitch(switchHandle))
+  }
   return ( 
     <div className={s.wrapper}>
 
@@ -51,7 +53,7 @@ const CarsFilter = ( ) => {
       />
 
       <p className={s.title}>Коробка передач</p>
-      <Switch arrayOfUnits={SwitchArr} />
+      <Switch arrayOfUnits={SwitchArr} onSwitchChange={switchChange}/>
 
       <p className={s.title}>Тип кузова</p>
       <div className={s.checkbox}>

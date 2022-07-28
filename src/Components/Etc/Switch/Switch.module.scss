@@ -7,24 +7,34 @@
   button{
     margin-top:10px;
     border: 1px solid #AFAFAF;
-    padding: 13px 20px;
+    padding: 13px 23px;
     background-color: #F6FBFF;
     font-size: 16px;
     color: #0373C5;
     cursor: pointer;
+    min-width: 65px;
     &:hover{
       background-color: #e6f2fd;
     }
     &:first-of-type{
       border-radius: 5px 0 0 5px;
-      padding: 13px 13px;
+      padding: 13px 23px;
     }
     &:last-of-type{
       border-radius:0 5px 5px 0;
-      padding: 13px 13px;
+      padding: 13px 23px;
     }
   }
   .unitActive{
     background-color: #d2e8ff;
+  }
+  .longUnitActive{
+    background-color: #d2e8ff;
+    padding: 13px 13px;
+    min-width: 15px;
+  }
+  .longSwitch{
+    padding: 13px 15px;
+    min-width: 15px;
   }
 }

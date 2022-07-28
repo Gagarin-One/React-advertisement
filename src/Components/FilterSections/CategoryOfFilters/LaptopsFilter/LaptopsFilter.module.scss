@@ -1,5 +1,11 @@
 .wrapper{
   margin-left:109px;
+  .title{
+    color:#AFAFAF;
+    font-weight: bold;
+    font-size:14px;
+    margin:20px 0  10px;
+  }
 }
 .myinput {
   height: 22px;
@@ -24,53 +30,8 @@
   color: #0373C5;
   font-size: 16px;
 }
-.title{
-  color:#AFAFAF;
-  font-weight: bold;
-  font-size:14px;
-  margin-top:30px;
-}
-.minChoiceTitle{
-  color:#AFAFAF;
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 0px;
-}
-.memory{
-  display:flex;
-  margin-top:10px;
-  button{
-    background-color: #F6FBFF;
-    font-size: 16px;
-    color: #0373C5;
-    border: 1px solid #AFAFAF;
-    padding: 13px 19px;
-    &:first-of-type{
-      border-radius: 5px 0 0 5px;
-    }
-    &:last-of-type{
-      border-radius:0 5px 5px 0;
-    }
-  }
-}
-.diagonal{
-  display:flex;
-  margin-top:10px;
-  button{
-    background-color: #F6FBFF;
-    font-size: 16px;
-    color: #0373C5;
-    border: 1px solid #AFAFAF;
-    padding: 13px 23px;
-    &:first-of-type{
-      border-radius: 5px 0 0 5px;
-    }
-    &:last-of-type{
-      border-radius:0 5px 5px 0;
-    }
-  }
-}
+
+
 
 
 

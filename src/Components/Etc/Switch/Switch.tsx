@@ -3,31 +3,44 @@ import { useAppDispatch, useAppSelector } from "../../../Store/hooks"
 import { ContentType, MainSlice } from "../../../Store/Reducers/AppSlice"
 import s from './Switch.module.scss'
 type Unit = {switchName: string, switchTitle: string}
-type SwitchType = {arrayOfUnits:Array<Unit>}
+type SwitchType = {arrayOfUnits:Array<Unit>,onSwitchChange:(arg:string) => void}
 
-const Switch:FC<SwitchType> = ({arrayOfUnits}) => {
-  const dispatch = useAppDispatch()
-  const {changeFilterSwitch} = MainSlice.actions
+const Switch:FC<SwitchType> = ({arrayOfUnits,onSwitchChange}) => {
+
  let [Active, setActive] = useState('any')
 
-  const onSwitchChange = (switchHandle:string) => {
-    dispatch(changeFilterSwitch(switchHandle))
+  const onHandleChange = (switchHandle:string) => {
+    onSwitchChange(switchHandle)
     setActive(switchHandle)
   }
 
   return( 
   <div className={s.switch}>{
+    arrayOfUnits.length > 4 ? 
+    arrayOfUnits.map((item) => {
+
+      if (Active == item.switchName){
+        return <button 
+        className={s.longUnitActive} 
+        onClick={() => onHandleChange(item.switchName)}
+        >{item.switchTitle}</button>} else 
+        { 
+        return <button
+        className={s.longSwitch}
+        onClick={() => onHandleChange(item.switchName)}
+        >{item.switchTitle}</button>
+        }
+    }) :
     arrayOfUnits.map((item) => {
 
       if (Active == item.switchName){
         return <button 
         className={s.unitActive} 
-        onClick={() => onSwitchChange(item.switchName)}
+        onClick={() => onHandleChange(item.switchName)}
         >{item.switchTitle}</button>} else 
-        
         { 
         return <button
-        onClick={() => onSwitchChange(item.switchName)}
+        onClick={() => onHandleChange(item.switchName)}
         >{item.switchTitle}</button>
         }
     })
