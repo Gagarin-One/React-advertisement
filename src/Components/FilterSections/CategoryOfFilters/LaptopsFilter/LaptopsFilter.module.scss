@@ -6,31 +6,34 @@
     font-size:14px;
     margin:20px 0  10px;
   }
-}
-.myinput {
-  height: 22px;
-  width: 22px;
-  
-  &[type="checkbox"]:before {
-    width: 20px;
-    height: 20px;
+  .myinput {
+    height: 22px;
+    width: 22px;
+    
+    &[type="checkbox"]:before {
+      width: 20px;
+      height: 20px;
+    }
+    &[type="checkbox"]:after {
+      top: -20px;
+      width: 16px;
+      height: 16px;
+    }
   }
-  &[type="checkbox"]:after {
-    top: -20px;
-    width: 16px;
-    height: 16px;
+  .checkbox{
+    display:flex;
+    p{
+      margin-top:5px;
+      margin-left: 5px;
+    }
+    color: #0373C5;
+    font-size: 16px;
   }
-}
-.checkbox{
-  display:flex;
-  p{
-    margin-top:5px;
-    margin-left: 5px;
-  }
-  color: #0373C5;
-  font-size: 16px;
 }
 
+input{
+  cursor: pointer;
+}
 
 
 

@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { useAppSelector } from "../../Store/hooks";
 import { ContentType } from "../../Store/Reducers/AppSlice";
 import s from './ItemWindow.module.scss'
 
@@ -57,7 +56,6 @@ const ItemWindow:FC<ItemWindowType> = ({changeWindow,itemData}) => {
           </div>
         </div>
         </div>
-        
       </div>
     </div>
     

@@ -1,33 +1,23 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import s from './CommonFilters.module.scss'
 import Select, { OnChangeValue } from 'react-select'
 import Slider from 'rc-slider';
-
 import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
 import { useAppSelector, useAppDispatch } from '../../../Store/hooks';
-import {MainSlice} from '../../../Store/Reducers/AppSlice';
+import {MainSlice, OptionStr} from '../../../Store/Reducers/AppSlice';
 import FilterSections from "../FiltersSections";
-import { FetchAds } from "../../../Store/Reducers/actionCreators";
-import VButton from "../../Etc/ViewButton/ResultButton";
-import ResultButton from "../../Etc/ViewButton/ResultButton";
+import ResultButton from "../../Additional components/ViewButton/ResultButton";
 
 
 type CommonFiltersType = {createFilteredArr:()=>void}
 const CommonFilters:FC<CommonFiltersType> = ({createFilteredArr}) => {
-  const {ads} = useAppSelector(state=> state.mainReducer)
   const {category} = useAppSelector(state=> state.mainReducer)
   const {changeCategory} = MainSlice.actions
   const {setRange} = MainSlice.actions
   const dispatch = useAppDispatch()
   const {sliderRange} = useAppSelector(state => state.mainReducer)
   const {maxPrice} = useAppSelector(state => state.mainReducer)
-  
-  useEffect(() => {
-    dispatch(FetchAds(category?.value))                                
-  },[category])
-
-  type Option = {value: string, label: string}
 
   const options = [
     { value: 'All', label: 'Все' },
@@ -37,15 +27,13 @@ const CommonFilters:FC<CommonFiltersType> = ({createFilteredArr}) => {
     { value: 'Cameras', label: 'Фотоаппараты' }
   ]
 
-  let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
+  const onHandleChange = (selectedOption : OnChangeValue<OptionStr, false>) => {
     dispatch(changeCategory(selectedOption));
   }
 
-  let onChangeRange = (value:any) => {
+  const onChangeRange = (value:any) => {
     dispatch(setRange(value))
   }
-console.log(sliderRange)
-  
 
   return (
     <div className={s.wrapper}>

@@ -1,26 +1,22 @@
 import React, { useEffect } from "react";
 import s from './EstateFilter.module.scss'
 import Select, { OnChangeValue } from 'react-select'
-import VButton from "../../../Etc/ViewButton/ResultButton";
-import { useAppDispatch, useAppSelector } from "../../../../Store/hooks";
-import { MainSlice } from "../../../../Store/Reducers/AppSlice";
-import { FetchAds } from "../../../../Store/Reducers/actionCreators";
-import Switch from "../../../Etc/Switch/Switch";
+import { useAppDispatch } from "../../../../Store/hooks";
+import { MainSlice, OptionNum } from "../../../../Store/Reducers/AppSlice";
+import Switch from "../../../Additional components/Switch/Switch";
+import Checkbox from "../../../Additional components/Checkbox/Checkbox";
 
 const EstateFilter = () => {
-  type Option = {value: number, label: string}
   const dispatch = useAppDispatch()
   const {changeFilterSwitch} = MainSlice.actions
   const {changeFilterSelect} = MainSlice.actions
-  const {filterData} = useAppSelector(state => state.mainReducer)
   const {changeFilterCheckbox} = MainSlice.actions
 
   useEffect(() => {
-    dispatch(FetchAds('Estate'))
     dispatch(changeFilterSelect(20))
   },[])
 
-  let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
+  const onHandleChange = (selectedOption : OnChangeValue<OptionNum, false>) => {
     dispatch(changeFilterSelect(selectedOption!.value)) 
   }
   const SwitchArr = [
@@ -32,6 +28,12 @@ const EstateFilter = () => {
     {switchName:'5+',switchTitle:"5+"}
   ]
     
+  const CheckboxArr = [
+    {checkboxName: 'house', checkboxTitle:'Дом'},
+    {checkboxName: 'flat', checkboxTitle:'Квартира'},
+    {checkboxName: 'apartment', checkboxTitle:'Апартаменты'}
+  ]
+
   const options = [
     { value: 20, label: '20' },
     { value: 40, label: '40' },
@@ -40,7 +42,7 @@ const EstateFilter = () => {
     { value: 120, label: '120' }
   ]
 
-  const checkboxChange = (checkbox:string) => {     //можно вынести
+  const checkboxChange = (checkbox:string) => {
     dispatch(changeFilterCheckbox(checkbox))
   }
   const switchChange = (switchHandle:string) => {
@@ -49,19 +51,10 @@ const EstateFilter = () => {
 
   return (
     <div className={s.wrapper}>
+      
       <p className={s.title}>Тип недвижимости</p>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>checkboxChange('house')} className={s.myinput}/>
-        <p>Дом</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>checkboxChange('flat')} className={s.myinput}/>
-        <p>Квартира</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>checkboxChange('apartment')} className={s.myinput}/>
-        <p>Апартаменты</p>
-      </div>
+      <Checkbox arrayOfUnits={CheckboxArr} checkboxChange={checkboxChange}/>
+      
       <p className={s.title}>Минимальная площадь,м²</p>
       <Select 
         className={s.select}

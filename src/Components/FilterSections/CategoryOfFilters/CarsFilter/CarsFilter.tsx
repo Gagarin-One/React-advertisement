@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from "react";
 import s from "./CarsFilter.module.scss"
 import Select, { OnChangeValue } from 'react-select'
-import { useAppDispatch, useAppSelector } from '../../../../Store/hooks';
-import {MainSlice} from '../../../../Store/Reducers/AppSlice';
-import { FetchAds } from "../../../../Store/Reducers/actionCreators";
-import Switch from "../../../Etc/Switch/Switch";
+import { useAppDispatch } from '../../../../Store/hooks';
+import {MainSlice, OptionNum} from '../../../../Store/Reducers/AppSlice';
+import Switch from "../../../Additional components/Switch/Switch";
+import Checkbox from "../../../Additional components/Checkbox/Checkbox";
+
 const CarsFilter = ( ) => {
-  type Option = {value: number, label: string} //!!! FIXME
-
   const dispatch = useAppDispatch()
-  let {changeFilterSelect} = MainSlice.actions
-  let {changeFilterSwitch} = MainSlice.actions
-  let {changeFilterCheckbox} = MainSlice.actions
+  const {changeFilterSelect} = MainSlice.actions
+  const {changeFilterSwitch} = MainSlice.actions
+  const {changeFilterCheckbox} = MainSlice.actions
   
-
-  let onHandleChange = (selectedOption : OnChangeValue<Option, false>) => {
+  const onHandleChange = (selectedOption : OnChangeValue<OptionNum, false>) => {
     dispatch(changeFilterSelect(selectedOption!.value))
   }
-
-  useEffect(() => {
-    dispatch(FetchAds('Cars'))
-  },[])
 
   const options = [
     { value: 1990, label: '1990' },
@@ -34,6 +28,15 @@ const CarsFilter = ( ) => {
   {switchName:'any',switchTitle:"Любая"},
   {switchName:'auto',switchTitle:"Автомат"},
   {switchName:'mech',switchTitle:"Механика"},]
+
+  const CheckboxArr = [
+    {checkboxName: 'sedan', checkboxTitle:'Седан'},
+    {checkboxName: 'universal', checkboxTitle:'Универсал'},
+    {checkboxName: 'hatchback', checkboxTitle:'Хэтчбэк'},
+    {checkboxName: 'off-road', checkboxTitle:'Внедорожник'},
+    {checkboxName: 'cope', checkboxTitle:'Купе'},
+  ]
+
   const checkboxChange = (checkbox:string) => {
     dispatch(changeFilterCheckbox(checkbox))
   }
@@ -56,27 +59,7 @@ const CarsFilter = ( ) => {
       <Switch arrayOfUnits={SwitchArr} onSwitchChange={switchChange}/>
 
       <p className={s.title}>Тип кузова</p>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>checkboxChange('sedan')}className={s.myinput}/>
-        <p>Седан</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox'  onChange={() =>checkboxChange('universal')} className={s.myinput}/>
-        <p>Универсал</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox'  onChange={() =>checkboxChange('hatchback')} className={s.myinput}/>
-        <p>Хэтчбэк</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox'  onChange={() =>checkboxChange('off-road')} className={s.myinput}/>
-        <p>Внедорожник</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox'  onChange={() =>checkboxChange('cope')} className={s.myinput}/>
-        <p>Купе</p>
-      </div>
-
+      <Checkbox arrayOfUnits={CheckboxArr} checkboxChange={checkboxChange}/>
     </div>
   )
 }

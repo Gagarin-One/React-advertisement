@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-type Option = {value: string, label: string}
+export type OptionNum = {value: number, label: string}
+export type OptionStr = {value: string, label: string}
 export type TagsType = {
   select: number,
   switch: string,
@@ -28,7 +29,7 @@ export type ContentType = {
 type FilterDataType = {
   select:Array<number | null> ,
   switch:Array<string | undefined>,
-  checkbox:Array<string> , // описать через интерфейс n колво объектов
+  checkbox:Array<string>
   dopeCheckbox: Array<string> 
 }
 
@@ -36,7 +37,7 @@ type MainState = {
   maxPrice:number,
   isLoading: boolean,
   sliderRange:Array<number>,
-  category:Option|null
+  category:OptionStr|null
   ads:Array<ContentType>
   error:string
   ContentArr:Array<ContentType>
@@ -83,7 +84,7 @@ export const MainSlice = createSlice({
       state.error = action.payload
     },
 
-    changeCategory(state,action:PayloadAction<Option|null>){
+    changeCategory(state,action:PayloadAction<OptionStr|null>){
       state.category=action.payload
     },
     setRange(state,action:PayloadAction<Array<number>>){

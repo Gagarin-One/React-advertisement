@@ -1,26 +1,21 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../Store/hooks";
-import { FetchAds } from "../../../../Store/Reducers/actionCreators";
+import { useAppDispatch } from "../../../../Store/hooks";
 import { MainSlice } from "../../../../Store/Reducers/AppSlice";
-import Switch from "../../../Etc/Switch/Switch";
+import Checkbox from "../../../Additional components/Checkbox/Checkbox";
+import Switch from "../../../Additional components/Switch/Switch";
 import s from "./LaptopsFilter.module.scss"
+
 const LaptopsFilter = () => {
   const dispatch = useAppDispatch()
   const {changeFilterSwitch} = MainSlice.actions
   const {changeDopeFilterSwitch} = MainSlice.actions
-  const {changeFilterSelect} = MainSlice.actions
-  const {filterData} = useAppSelector(state => state.mainReducer)
   const {changeFilterCheckbox} = MainSlice.actions
   const {changeDopeFilterCheckbox} = MainSlice.actions
 
-  useEffect(() => {
-    dispatch(FetchAds('Laptops'))
-  },[])
-
-  const checkboxChange = (checkbox:string) => {     //можно вынести
+  const checkboxChange = (checkbox:string) => {    
     dispatch(changeFilterCheckbox(checkbox))
   }
-  const DopeCheckboxChange = (checkbox:string) => {     //можно вынести
+  const DopeCheckboxChange = (checkbox:string) => { 
     dispatch(changeDopeFilterCheckbox(checkbox))
   }
   const onMemoryChange = (memory:string) => {
@@ -41,23 +36,24 @@ const LaptopsFilter = () => {
     {switchName:'15',switchTitle:"15"},
     {switchName:'16',switchTitle:"16"},
   ]
+  const laptopArr = [
+    {checkboxName: 'ultrabook', checkboxTitle:'Ультрабук'},
+    {checkboxName: 'home laptop', checkboxTitle:'Домашний ноутбук'},
+    {checkboxName: 'gaming laptop', checkboxTitle:'Игровой ноутбук'},
+  ]
+  const cpuArr = [
+    {checkboxName: 'i3', checkboxTitle:'Intel Core i3'},
+    {checkboxName: 'i5', checkboxTitle:'Intel Core i5'},
+    {checkboxName: 'i7', checkboxTitle:'Intel Core i7'},
+    {checkboxName: 'm1', checkboxTitle:'Apple M1'}
+  ]
+  
   
   return (
     <div className={s.wrapper}>
       <p className={s.title}>Тип ноутбука</p>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>checkboxChange('ultrabook')} className={s.myinput}/>
-        <p>Ультрабук</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>checkboxChange('home laptop')} className={s.myinput}/>
-        <p>Домашний ноутбук</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox'  onChange={() =>checkboxChange('gaming laptop')} className={s.myinput}/>
-        <p>Игровой ноутбук</p>
-      </div>
-
+      <Checkbox arrayOfUnits={laptopArr} checkboxChange={checkboxChange}/>
+      
       <p className={s.title}>Минимальный объём оперативной памяти</p>
       <Switch arrayOfUnits={MemoryArr} onSwitchChange={onMemoryChange}/>
 
@@ -65,22 +61,8 @@ const LaptopsFilter = () => {
       <Switch arrayOfUnits={DiagonalArr} onSwitchChange={onDiaganalChange}/>
       
       <p className={s.title}>Tип процессора</p>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>DopeCheckboxChange('i3')} className={s.myinput}/>
-        <p>Intel Core i3</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>DopeCheckboxChange('i5')} className={s.myinput}/>
-        <p>Intel Core i5</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>DopeCheckboxChange('i7')} className={s.myinput}/>
-        <p>Intel Core i7</p>
-      </div>
-      <div className={s.checkbox}>
-        <input type='checkbox' onChange={() =>DopeCheckboxChange('m1')} className={s.myinput}/>
-        <p>Apple M1</p>
-      </div>
+      <Checkbox arrayOfUnits={cpuArr} checkboxChange={DopeCheckboxChange}/>
+      
     </div>
   )
 }

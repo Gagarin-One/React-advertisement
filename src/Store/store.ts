@@ -1,4 +1,4 @@
-import { configureStore,combineReducers, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore,combineReducers } from '@reduxjs/toolkit';
 import mainReducer from './Reducers/AppSlice'
 
 const rootReducer = combineReducers({
