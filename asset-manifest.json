@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Gagarin-One/React-advertisement/static/css/main.bad5a788.css",
-    "main.js": "/Gagarin-One/React-advertisement/static/js/main.3b3f57b0.js",
-    "static/js/787.91e34ba8.chunk.js": "/Gagarin-One/React-advertisement/static/js/787.91e34ba8.chunk.js",
-    "index.html": "/Gagarin-One/React-advertisement/index.html",
-    "main.bad5a788.css.map": "/Gagarin-One/React-advertisement/static/css/main.bad5a788.css.map",
-    "main.3b3f57b0.js.map": "/Gagarin-One/React-advertisement/static/js/main.3b3f57b0.js.map",
-    "787.91e34ba8.chunk.js.map": "/Gagarin-One/React-advertisement/static/js/787.91e34ba8.chunk.js.map"
+    "main.css": "/React-advertisement/static/css/main.bad5a788.css",
+    "main.js": "/React-advertisement/static/js/main.9a6e19cf.js",
+    "static/js/787.91e34ba8.chunk.js": "/React-advertisement/static/js/787.91e34ba8.chunk.js",
+    "index.html": "/React-advertisement/index.html",
+    "main.bad5a788.css.map": "/React-advertisement/static/css/main.bad5a788.css.map",
+    "main.9a6e19cf.js.map": "/React-advertisement/static/js/main.9a6e19cf.js.map",
+    "787.91e34ba8.chunk.js.map": "/React-advertisement/static/js/787.91e34ba8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bad5a788.css",
-    "static/js/main.3b3f57b0.js"
+    "static/js/main.9a6e19cf.js"
   ]
 }
