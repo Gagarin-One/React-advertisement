@@ -86,7 +86,7 @@ const MainPage = ( ) => {
     if(filterData.select.length > 1){
       localArray = localArray.filter(item => item.tags.secondSelect >= filterData.select[1]!)
     }
-    
+
     //write the filtered elements to the store
     dispatch(changeContentArr(localArray))   
   }
