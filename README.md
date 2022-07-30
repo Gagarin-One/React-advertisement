@@ -9,7 +9,7 @@ Ad site with filters for various product categories
 ### Click [here](https://gagarin-one.github.io/React-advertisement/) to view the deployment
 
 
-![some]([https://media.giphy.com/media/o7NYAcDyEJh9K4SiXJ/giphy.gif])
+![some](https://media.giphy.com/media/o7NYAcDyEJh9K4SiXJ/giphy.gif)
 ## Technologies
 Project is created with:
   Create react redux app
